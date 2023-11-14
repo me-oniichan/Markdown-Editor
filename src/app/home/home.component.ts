@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Page } from '../page';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    mdval = "";
-    constructor(){
-        console.log("hi");
+    @Input() selectedPage!: Page;
+    @Output() reset = new EventEmitter<number>();
+    buffer: string = "";
+
+    ngOnInit(){
+      this.buffer = this.selectedPage?.content;
+    }
+
+    save(){
+      this.selectedPage.content = this.buffer;
+    }
+
+    back(){
+      console.log(this.back);
+      this.reset.emit(-1);
     }
 }

@@ -1,0 +1,11 @@
+.cream{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.view{
+    max-width: 1500px;
+    margin: auto;
+}

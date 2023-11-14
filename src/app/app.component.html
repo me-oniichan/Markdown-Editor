@@ -1,6 +1,27 @@
 <div class="home">
-  <app-home></app-home>
-  <!-- <markdown ngPreserveWhitespaces *ngFor="let page of pages[0].lines">
-    {{page}}
-  </markdown> -->
+  <div class="container" *ngIf="selected < 0">
+    <ul *ngFor="let page of pages; let i= index">
+      <li (click)="selected = i; readonly=true">
+        <span>{{page.title}}</span>
+        <span (click)="selected = i; readonly=false;"> edit</span>
+        <span (click)="remove(i)"> delete</span>
+      </li>
+    </ul>
+
+    <div>
+      <button class="new" (click)="append()">New</button>
+    </div>
+  </div>
+  <div *ngIf="selected > -1 && readonly" class="view">
+    <div class="cream">
+      <div class="title">{{pages[selected].title}}</div>
+      <div class="options">
+        <button (click)="selected = -1">Back</button>
+      </div>
+    </div>
+    <app-view [selectedPage]="pages[selected]"></app-view>
+  </div>
+  <div *ngIf="selected > -1 && !readonly">
+    <app-home [selectedPage]="pages[selected]" (reset)="selected = -1"></app-home>
+  </div>
 </div>

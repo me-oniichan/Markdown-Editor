@@ -1,5 +1,16 @@
-<div class="editor-area">
-    <textarea name="editor" id="editor" [(ngModel)]="mdval" [value]="mdval"></textarea>
-    <markdown ngPreserveWhitespaces [data]="mdval">
-    </markdown>
+<div class="edit">
+    <div class="cream">
+        <div class="title">
+            <input type="text" [(ngModel)]="selectedPage.title">
+        </div>
+        <div class="options">
+            <button (click)="back()">Back</button>
+            <button (click)="save()">Save</button>
+        </div>
+    </div>
+    <div class="editor-area">
+        <textarea name="editor" id="editor" [(ngModel)]="buffer" [value]="buffer"></textarea>
+        <markdown ngPreserveWhitespaces [data]="buffer">
+        </markdown>
+    </div>
 </div>
