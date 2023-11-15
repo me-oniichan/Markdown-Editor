@@ -1,10 +1,13 @@
 <div class="home">
   <div class="container" *ngIf="selected < 0">
+    <h1 style="text-align: center;">Markdown Editor</h1>
     <ul *ngFor="let page of pages; let i= index">
       <li (click)="selected = i; readonly=true">
         <span>{{page.title}}</span>
-        <span (click)="selected = i; readonly=false;"> edit</span>
-        <span (click)="remove(i)"> delete</span>
+        <span>
+          <span class="op" (click)="selected = i; readonly=false;"> Edit</span>
+          <span class="op" style="background-color: red;" (click)="remove(i)"> Delete</span>
+        </span>
       </li>
     </ul>
 
@@ -12,7 +15,7 @@
       <button class="new" (click)="append()">New</button>
     </div>
   </div>
-  <div *ngIf="selected > -1 && readonly" class="view">
+  <div *ngIf="selected > -1 && readonly" class="disp">
     <div class="cream">
       <div class="title">{{pages[selected].title}}</div>
       <div class="options">

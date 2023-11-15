@@ -8,7 +8,7 @@ import { Page } from './page';
 })
 export class AppComponent {
   title = 'Markdown-Editor';
-  pages: Page[] = [{title: "sample", content: "# This is markdown"}];
+  pages: Page[] = [{title: "Sample", content: "# This is markdown"}];
   selected: number = -1;
   readonly: boolean = true;
 
